@@ -6,11 +6,14 @@ from slack import Notify
 def main():
     logger = Log()
     notifier = Notify(logger=logger)
+    logger.log_info(msg='ステータス通知 開始')
     ip_address = utils.get_ip_address()
-    logger.log_info(msg='IPアドレス通知 開始')
     logger.log_info(msg=f'IPアドレス: {ip_address}')
     notifier.send_with_text(text=f'IPアドレス: {ip_address}')
-    logger.log_info(msg='IPアドレス通知 終了')
+    disk_usage = utils.get_disk_usage()
+    logger.log_info(msg=f'ディスク使用量\n{disk_usage}')
+    notifier.send_with_text(text=f'ディスク使用量\n{disk_usage}')
+    logger.log_info(msg='ステータス通知 終了')
 
 
 if __name__ == '__main__':
