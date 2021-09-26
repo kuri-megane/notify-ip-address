@@ -7,7 +7,7 @@ class Log:
 
     def __init__(self):
         logger = logging.getLogger(__name__)
-        fl = logging.FileHandler(filename='./log/notify-ip-address.log')
+        fl = logging.FileHandler(filename='./log/notify-raspberry-pi-status.log')
         logger.addHandler(fl)
         logger.setLevel(LOG_LEVEL)
         fl.setLevel(LOG_LEVEL)
