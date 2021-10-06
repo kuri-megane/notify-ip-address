@@ -2,7 +2,7 @@ from netifaces import interfaces, ifaddresses, AF_INET
 import subprocess
 
 
-def get_ip_address():
+def get_local_ip_address():
     addresses = []
     for ifaceName in interfaces():
         addresses.append([i['addr'] for i in ifaddresses(ifaceName).setdefault(AF_INET, [{'addr': 'No IP addr'}])])
@@ -17,5 +17,5 @@ def get_disk_usage():
 
 
 if __name__ == '__main__':
-    print(get_ip_address())
+    print(get_local_ip_address())
     print(get_disk_usage())
